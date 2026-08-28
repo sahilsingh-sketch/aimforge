@@ -3,6 +3,8 @@ from pydantic_settings import BaseSettings
 class Settings(BaseSettings):
     PROJECT_NAME: str = "AimForge Backend"
     API_V1_STR: str = "/api/v1"
+    ENVIRONMENT: str = "development"
+    FRONTEND_URL: str = "http://localhost:5173"
     
     # Auth
     SECRET_KEY: str = "aimforge-super-secret-key-replace-in-production"
@@ -56,6 +58,8 @@ backend_env = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__fil
 load_dotenv(backend_env)
 
 settings = Settings(
+    ENVIRONMENT=os.getenv("ENVIRONMENT", "development"),
+    FRONTEND_URL=os.getenv("FRONTEND_URL", "http://localhost:5173"),
     GEMINI_API_KEY=os.getenv("GEMINI_API_KEY", ""),
     GROQ_API_KEY=os.getenv("GROQ_API_KEY", ""),
     DEEPSEEK_API_KEY=os.getenv("DEEPSEEK_API_KEY", ""),

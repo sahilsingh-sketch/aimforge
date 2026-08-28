@@ -14,7 +14,7 @@ export default function AnalysisPage() {
   const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [currentVideoTime, setCurrentVideoTime] = useState(0);
+  const [, setCurrentVideoTime] = useState(0);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -38,6 +38,9 @@ export default function AnalysisPage() {
             }
         }
         
+        if (!currentJobId) {
+            throw new Error("Job ID is undefined.");
+        }
         const result = await aimforgeService.getAnalysis(currentJobId);
         if (isMounted) {
             setData(result);

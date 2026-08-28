@@ -1,4 +1,5 @@
-import React, { useState, MouseEvent } from 'react';
+import React, { useState } from 'react';
+import type { MouseEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthLayout } from '../components/AuthLayout';
 import { api } from '../services/api';

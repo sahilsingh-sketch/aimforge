@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from "react";
 import { Bell, Settings2, PlayCircle, Eye, ExternalLink } from "lucide-react";
-import { Button } from "./ui/button";
 import { useUpdatesStore } from "../store/useUpdatesStore";
 import type { UpdateItem } from "../services/updatesApi";
 

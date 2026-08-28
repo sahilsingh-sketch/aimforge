@@ -170,7 +170,7 @@ export default function UploadManager() {
                      if (!success) {
                         reject(lastErr);
                      } else {
-                        resolve(true);
+                        resolve();
                      }
                      
                      activeUploads--;

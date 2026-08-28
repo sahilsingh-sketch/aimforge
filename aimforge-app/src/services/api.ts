@@ -77,7 +77,7 @@ export const aimforgeService = {
   },
 
   validateBgmi: async (file: File): Promise<{ valid: boolean, reason: string }> => {
-    return new Promise(async (resolve, reject) => {
+    return new Promise(async (resolve) => {
         const video = document.createElement("video");
         video.src = URL.createObjectURL(file);
         video.muted = true;

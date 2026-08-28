@@ -2,22 +2,16 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import {
   ArrowDownUp,
-  BarChart3,
   CalendarRange,
   ChevronRight,
   Clock3,
   Filter,
-  History,
-  LayoutDashboard,
-  MessageCircle,
   PlayCircle,
   Sparkles,
   Target,
   TimerReset,
   Trophy,
-  User,
   Video,
-  Zap,
 } from "lucide-react";
 
 import { ComingSoonModal } from "@/components/ComingSoonModal";
@@ -25,14 +19,10 @@ import { aimforgeService } from "../services/api";
 
 export default function App() {
   const navigate = useNavigate();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [modalOpen, setModalOpen] = useState(false);
-  const [modalFeature, setModalFeature] = useState("");
+  const [modalFeature] = useState("");
   const [gameplays, setGameplays] = useState<any[]>([]);
-
-  const handleComingSoon = (feature: string) => {
-    setModalFeature(feature);
-    setModalOpen(true);
-  };
 
   useEffect(() => {
     const loadGameplays = async () => {
