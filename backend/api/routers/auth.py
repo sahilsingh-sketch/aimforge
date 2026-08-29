@@ -43,7 +43,7 @@ def signup(user_in: UserCreate, response: Response, db: Session = Depends(get_db
         value=f"Bearer {access_token}",
         httponly=True,
         max_age=settings.ACCESS_TOKEN_EXPIRE_MINUTES * 60,
-        samesite="lax",
+        samesite="none" if settings.ENVIRONMENT == "production" else "lax",
         secure=(settings.ENVIRONMENT == "production"),
     )
     return new_user
@@ -73,7 +73,7 @@ def login(user_in: UserLogin, response: Response, db: Session = Depends(get_db))
         value=f"Bearer {access_token}",
         httponly=True,
         max_age=int(expires_delta.total_seconds()),
-        samesite="lax",
+        samesite="none" if settings.ENVIRONMENT == "production" else "lax",
         secure=(settings.ENVIRONMENT == "production"),
     )
     return user
@@ -149,8 +149,8 @@ async def google_auth(request_data: GoogleAuthRequest, response: Response, db: S
         value=f"Bearer {access_token}",
         httponly=True,
         max_age=int(expires_delta.total_seconds()),
-        samesite="lax",
-        secure=False, # Set to True in production with HTTPS
+        samesite="none" if settings.ENVIRONMENT == "production" else "lax",
+        secure=(settings.ENVIRONMENT == "production"),
     )
     return user
 

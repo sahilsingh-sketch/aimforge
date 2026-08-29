@@ -19,6 +19,7 @@ class Settings(BaseSettings):
     
     # Storage
     MAX_VIDEO_SIZE_MB: int = 500
+    STORAGE_ROOT: str = "/tmp/aimforge"
     @property
     def MAX_UPLOAD_SIZE(self) -> int:
         return self.MAX_VIDEO_SIZE_MB * 1024 * 1024
@@ -72,6 +73,7 @@ settings = Settings(
     DATABASE_URL=os.getenv("DATABASE_URL", ""),
     SECRET_KEY=os.getenv("SECRET_KEY", "aimforge-super-secret-key-replace-in-production"),
     MAX_VIDEO_SIZE_MB=int(os.getenv("MAX_VIDEO_SIZE_MB", "500")),
+    STORAGE_ROOT=os.getenv("STORAGE_ROOT", "/tmp/aimforge"),
     BGMI_VALIDATION_THRESHOLD=float(os.getenv("BGMI_VALIDATION_THRESHOLD", "0.70")),
     GNEWS_API_KEY=os.getenv("GNEWS_API_KEY", ""),
     YOUTUBE_API_KEY=os.getenv("YOUTUBE_API_KEY", ""),
